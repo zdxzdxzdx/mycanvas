@@ -160,7 +160,8 @@ button{
         max-height: 60vmax;
         border: 1px solid #cccccc;
         top: 120px;
-        left: 4vmax;
+        left: 1vmax;
+        margin: 2px;
 
 
 
@@ -175,4 +176,4 @@ button{
 
 
 
-/*# sourceMappingURL=style.86ee29d2.css.map */
+/*# sourceMappingURL=style.178269ec.css.map */

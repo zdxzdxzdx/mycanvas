@@ -160,7 +160,8 @@ button{
         max-height: 60vmax;
         border: 1px solid #cccccc;
         top: 120px;
-        left: 4vmax;
+        left: 1vmax;
+        margin: 2px;
 
 
 
