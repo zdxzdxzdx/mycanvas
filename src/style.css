@@ -155,11 +155,14 @@ button{
         margin: 6px;
     }
     #canvas{
-        max-width: 100%;
+        /*max-width: 120vmax;*/
+        width:50vmax ;
         max-height: 60vmax;
         border: 1px solid #cccccc;
         top: 120px;
-        margin: 2px;
+        left: 4vmax;
+
+
 
     }
 
