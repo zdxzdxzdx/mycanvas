@@ -158,7 +158,8 @@ button{
         /*max-width: 120vmax;*/
         width:50vmax ;
         max-height: 60vmax;
-        border: 1px solid #cccccc;
+       border-left:none ;
+        border-right: none;
         top: 120px;
         left: 3vmax;
 
@@ -173,4 +174,4 @@ button{
 
 
 
-/*# sourceMappingURL=style.abbca611.css.map */
+/*# sourceMappingURL=style.22c02268.css.map */
