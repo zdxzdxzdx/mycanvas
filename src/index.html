@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的画板</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<canvas id="canvas" ></canvas>
+<div class="other">
+    <div class="color">
+        <button id="black" class="shape black"></button>
+        <button id="yellow" class="shape yellow"></button>
+        <button id="red" class="shape red"></button>
+        <button id="pink" class="shape pink"></button>
+        <button id="green" class="shape green"></button>
+    </div>
+
+    <div class="brush">
+<button id="pen">
+    <svg class="icon" >
+        <use xlink:href="#icon-pen"></use>
+    </svg>
+</button>
+<button id="era">
+    <svg class="icon" >
+    <use xlink:href="#icon-era"></use>
+</svg></button>
+<button id="clear">
+    <svg class="icon" >
+        <use xlink:href="#icon-clear"></use>
+    </svg>
+</button>
+<button id="pen_big">
+     <div class="big"></div>
+</button>
+
+<button id="pen_small">
+        <div class="small"></div>
+</button>
+    </div>
+</div>
+<script>
+    let era= document.getElementById('era')
+    let canvas = document.getElementById("canvas")
+    let yellow= document.getElementById('yellow')
+    let red= document.getElementById('red')
+    let green= document.getElementById('green')
+    let pink= document.getElementById('pink')
+    let black= document.getElementById('black')
+    let clear= document.getElementById('clear')
+    let pen= document.getElementById('pen')
+    let pen_big= document.getElementById('pen_big')
+    let pen_small= document.getElementById('pen_small')
+
+    canvas.width=document.documentElement.clientWidth;
+    canvas.height=document.documentElement.clientHeight;
+    var isTouchDevice = 'ontouchstart' in document.documentElement
+    let ctx = canvas.getContext("2d")
+    let paining=false
+    let EraserEnabled = false;
+    let last={'x':undefined,'y':undefined}
+    ctx.fillStyle="black"
+    ctx.strokeStyle="none"
+    ctx.lineWidth=2
+    ctx.lineCap="round"
+
+
+    function drawLine(x1,y1,x2,y2){
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);//起点
+        ctx.lineTo(x2, y2);//终点
+        ctx.stroke();
+    }
+
+
+
+
+    if(isTouchDevice){
+        canvas.ontouchstart=(e) =>{
+            let x = e.touches[0].clientX;
+            let y = e.touches[0].clientY;
+            paining=true;
+            if (EraserEnabled) {
+                ctx.clearRect(x - 20, y - 20, 40, 40)
+            }
+            last=[e.touches[0].clientX,e.touches[0].clientY]
+        }
+        canvas.ontouchmove = (e)=>{
+            let x=e.touches[0].clientX
+            let y=e.touches[0].clientY
+
+            let newPoint = {x: x, y: y};
+            if (paining) {
+                if (EraserEnabled) {
+                    ctx.clearRect(x - 15, y - 15, 30, 30)
+                }else {
+                    drawLine(last[0], last[1], x, y)
+                }
+                last = [e.touches[0].clientX, e.touches[0].clientY]
+            }
+        }
+    }
+    else{
+        canvas.onmousedown=(e)=>{
+            let x=e.clientX;
+            let y=e.clientY;
+            paining=true
+            if (EraserEnabled) {
+                ctx.clearRect(x - 15, y - 15, 30, 30)
+            }
+            last=[e.clientX,e.clientY]
+        }
+        canvas.onmousemove = (e)=>{
+            let x=e.clientX;
+            let y=e.clientY;
+            let newPoint = {x: x, y: y};
+            if(paining === true){
+                if (EraserEnabled) {
+                    ctx.clearRect(x - 15, y - 15, 30, 30)}else {
+                    drawLine(last[0], last[1], e.clientX, e.clientY)
+                    last = [e.clientX, e.clientY]
+
+                }
+            }
+        }
+
+        canvas.onmouseup=()=>{
+            paining=false
+        }
+
+        era.onclick=()=>{
+            console.log("点击")
+            EraserEnabled=true;
+        }
+        clear.onclick=()=>{
+            ctx.clearRect(0,0,canvas.width,canvas.height)
+            ctx.fillStyle='white'
+            ctx.fillRect(0,0,canvas.width,canvas.height)
+        }
+        yellow.onclick=()=>{
+            ctx.strokeStyle = 'yellow';
+
+        }
+        red.onclick=()=>{
+            ctx.strokeStyle = 'red';
+
+        }
+        green.onclick=()=>{
+            ctx.strokeStyle = 'green';
+
+        }
+        pink.onclick=()=>{
+            ctx.strokeStyle = 'pink';
+        }
+        black.onclick=()=>{
+            ctx.strokeStyle = 'black';
+        }
+
+        pen.onclick=()=>{
+            paining=true;
+            EraserEnabled=false;
+
+        }
+
+        pen_big.onclick=()=>{
+            ctx.lineWidth=8
+        }
+        pen_small.onclick=()=>{
+            ctx.lineWidth=1
+        }
+    }
+
+</script>
+<script src="//at.alicdn.com/t/font_2412804_gffr6pqom6s.js"></script>
+</body>
+</html>
