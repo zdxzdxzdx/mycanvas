@@ -8,7 +8,7 @@
     border: 1px solid  #cccccc;
     position: relative;
     left: 80px;
-    top: 70px;
+    top: 90px;
 
 }
 button{
@@ -31,7 +31,7 @@ button{
 .other{
   position: relative;
    background: red;
-    top: 20px;
+    top: 18px;
 }
 .color{
     position: absolute;
@@ -83,7 +83,6 @@ button{
     display: flex;
     justify-content: center;
     align-content: center;
-
 
 }
 
@@ -174,4 +173,4 @@ button{
 
 
 
-/*# sourceMappingURL=style.22c02268.css.map */
+/*# sourceMappingURL=style.8b3f4b5b.css.map */
