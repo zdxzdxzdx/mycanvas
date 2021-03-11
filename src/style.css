@@ -132,6 +132,38 @@ button{
     background: black;
 }
 
+@media (max-width:500px) {
+    .other{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .other .brush{
+        top: -80vmax;
+        /*margin-top: 30px;*/
+        left: 3vmax;
+    }
+    .other .color{
+        flex-direction: row;
+        top:  -93vmax;
+        left: 11vmax;
+    }
+    .yellow{
+        margin: 6px;
+    }
+    .pink{
+        margin: 6px;
+    }
+    #canvas{
+        max-width: 100vmax;
+        max-height: 80vmax;
+        border: 1px solid #cccccc;
+        top: 120px;
+        left: 6vmax;
+
+    }
+
+}
 
 
 
