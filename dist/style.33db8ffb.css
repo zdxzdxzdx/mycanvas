@@ -5,10 +5,10 @@
 }
 #canvas {
     display: block;
-    border: 1px solid  #cccccc;
+
     position: relative;
     left: 80px;
-    top: 90px;
+    top: 100px;
 
 }
 button{
@@ -107,7 +107,7 @@ button{
     margin-left: 6px;
 }
 .big{
-    /*margin-left: 6px;*/
+
     height: 28px;
     width: 10px;
     background: black;
@@ -173,4 +173,4 @@ button{
 
 
 
-/*# sourceMappingURL=style.8b3f4b5b.css.map */
+/*# sourceMappingURL=style.33db8ffb.css.map */
